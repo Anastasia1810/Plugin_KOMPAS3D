@@ -289,7 +289,6 @@
             this.MinimizeBox = false;
             this.Name = "SprocketForm";
             this.Text = "Плагин для КОМПАС-3D";
-            this.Load += new System.EventHandler(this.SprocketForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

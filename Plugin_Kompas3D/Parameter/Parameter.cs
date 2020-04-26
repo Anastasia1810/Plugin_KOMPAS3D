@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Parameter
 {
@@ -32,17 +28,18 @@ namespace Parameter
         private string _name;
 
         /// <summary>
-        /// 
+        /// Устанавливает и возвращает минимальное значение параметра
         /// </summary>
         public double MinValue { get; set; }
 
         /// <summary>
-        /// 
+        /// Устанавливает и возвращает максимальное значение параметра
         /// </summary>
         public double MaxValue { get; set; }
 
         /// <summary>
-        /// 
+        /// Устанавливает и возвращает текущее значение параметра, при условии 
+        /// что значение входит в установленный диапозон
         /// </summary>
         public double Value
         {
@@ -65,13 +62,7 @@ namespace Parameter
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        public string Name { get; set; }
-
-
-        /// <summary>
-        /// 
+        /// Конструктор класса
         /// </summary>
         /// <param name="minValue">Минимальное значение</param>
         /// <param name="maxValue">Максимальное значение</param>
@@ -79,10 +70,10 @@ namespace Parameter
         /// <param name="name">Название параметра</param>
         public Parameter(string name,double minValue, double maxValue, double value)
         {
-            Name = name;
-            MinValue = minValue;
-            MaxValue = maxValue;
-            Value = value;
+            _name = name;
+            _minValue = minValue;
+            _maxValue = maxValue;
+            _value = value;
         }
     }
 }

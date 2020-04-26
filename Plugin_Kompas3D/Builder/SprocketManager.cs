@@ -1,21 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using Kompas6API5;
-using Kompas6Constants;
-using Kompas6Constants3D;
 using Parameter;
 
 
 namespace Builder
 {
+    /// <summary>
+    /// Класс подключает экземпляры построителя модели к САПР Компас 3D и инициализирует их
+    /// </summary>
     public class SprocketManager
     {
+        /// <summary>
+        /// Поле хранит экземпляр построителя 3D звездочки
+        /// </summary>
         private SprocketBuilder _sprocketBuilder;
 
+        /// <summary>
+        /// Подключение к экземпляру КОМПАС-3D
+        /// </summary>
+        /// <returns></returns>
         private KompasObject OpenKompas3D()
         {
             KompasObject _kompasObject = null;
@@ -36,11 +39,18 @@ namespace Builder
             return _kompasObject;
         }
 
+        /// <summary>
+        /// Конструктор класса SprocketManager. Вызывает метод для инициализации экземпляра построителя 3D звездочки
+        /// <param name="parameters"></param>
         public SprocketManager(SprocketParameters parameters)
         {
             InitializeSprocket(parameters);
         }
 
+        /// <summary>
+        /// Метод создает экземпляр класса построителя модели
+        /// </summary>
+        /// <param name="parameters"></param>
         private void InitializeSprocket(SprocketParameters parameters)
         {
             _sprocketBuilder = new SprocketBuilder(parameters, OpenKompas3D());

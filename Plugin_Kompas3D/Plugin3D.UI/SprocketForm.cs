@@ -14,15 +14,22 @@ namespace Plugin3D.UI
 {
     public partial class SprocketForm : Form
     {
+        /// <summary>
+        /// Поле хранит все параметры звездочки
+        /// </summary>
         private SprocketParameters _sprocketParameters = new SprocketParameters();
 
+        /// <summary>
+        /// Хранит словарь соответствий TextBox и параметров моделей
+        /// </summary>
         private Dictionary<TextBox, NameParameter> _formElements = new Dictionary<TextBox, NameParameter>();
 
         public SprocketForm()
         {
+            //Инициализация формы
             InitializeComponent();
-            // DefaultValue();
 
+            //Создание списка элементов TextBox существующих на форме
             var elements = new List<(TextBox textBox, NameParameter parameter)>
                   {
                      (CircleRadiusTextBox1, NameParameter.CircleRadius),
@@ -33,7 +40,7 @@ namespace Plugin3D.UI
                      (ExeavationDepthTextBox6, NameParameter.ExcavationDepth),
                      (NumberOfTeethTextBox7, NameParameter.NumberOfTeeth)
                    };
-            //Перебор всех элементов картежа
+            //Перебор всех элементов списка
             foreach (var element in elements)
             {
                 //Добавление параметра в словарь элементов TextBox формы
@@ -41,8 +48,12 @@ namespace Plugin3D.UI
             }
         }
 
-
-
+        /// <summary>
+        /// Присваивает параметру значение из соответствующего элемента TextBox
+        /// при изменении пользователем значения Text для TextBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBoxChanged(object sender, EventArgs e)
         {
             //Преобразуем из object в TextBox
@@ -50,30 +61,29 @@ namespace Plugin3D.UI
             //Блок ожидания ошибки
             try
             {
+                //Окрашиваем поле в красный цвет
                 textBox.BackColor = Color.Salmon;
                 //Получаем текст из элемента TextBox
                 var value = double.Parse(textBox.Text);
-                //Определяем имя параметра соответствующего
-                //данному TextBox
+                //Определяем имя параметра соответствующего данному TextBox
                 var parameterName = _formElements[textBox];
                 //Присваиваем значение найденному параметру
                 _sprocketParameters.Parameter(parameterName).Value = value;
                 //Окрашиваем поле в зеленый цвет
                 textBox.BackColor = Color.LightGreen;
                 //При изменении радиуса внешней окружности
-
                 if (parameterName == NameParameter.CircleRadius)
                 {
                     _sprocketParameters.RecalculateCylinderRadius();
                     CircleRadiusTextBox1.Text = _sprocketParameters.Parameter(NameParameter.CircleRadius).Value.ToString();
                 }
-
+                //При изменении радиуса цилиндра
                 if (parameterName == NameParameter.CylinderRadius)
                 {
                     _sprocketParameters.RecalculateHoleRadius();
                     CylinderRadiusTextBox2.Text = _sprocketParameters.Parameter(NameParameter.CylinderRadius).Value.ToString();
                 }
-
+                //При изменении радиуса отверстия
                 if (parameterName == NameParameter.HoleRadius)
                 {
                     _sprocketParameters.RecalculateExcavationDepth();
@@ -84,20 +94,19 @@ namespace Plugin3D.UI
             //Выполняется в случае выявления ошибки в try
             catch
             {
-                //Окрашиваем полу в красный цвет
+                //Окрашиваем поле в красный цвет
                 textBox.BackColor = Color.Salmon;
             }
         }
 
-
+        /// <summary>
+        /// При нажатии на кнопку "Построить", метод для создания нового экземпляра класса SprocketManager
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BuildButton_Click(object sender, EventArgs e)
         {
             SprocketManager sprocketManager = new SprocketManager(_sprocketParameters);
-        }
-
-        private void SprocketForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

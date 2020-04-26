@@ -1,23 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Parameter
 {
+    /// <summary>
+    /// Класс, который хранит словарь параметров модели и реализует методы 
+    /// перерасчета значений параметров
+    /// </summary>
     public class SprocketParameters
     {
 
         /// <summary>
-        /// Словарь параметров звездочки
+        /// Поле хранит словарь параметров звездочки
         /// </summary>
         private Dictionary<NameParameter, Parameter> _parameters = new Dictionary<NameParameter, Parameter>();
 
+        /// <summary>
+        /// Возвращает параметр в соответствии с заданным именем параметра
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public Parameter Parameter(NameParameter name)
         {
             return _parameters[name];
         }
+
         /// <summary>
         /// Перерасчет радиуса цилиндра
         /// </summary>
@@ -31,6 +37,7 @@ namespace Parameter
                 Parameter(NameParameter.CylinderRadius).Value = maxCylinderRadius;
             }
         }
+
         /// <summary>
         /// Перерасчет радиуса отверстия
         /// </summary>
@@ -61,8 +68,7 @@ namespace Parameter
 
         public SprocketParameters()
         {
-           // _parameters = new Dictionary<NameParameter, Parameter>();
-            //Создаем кортеж со значениями параметров звездочки
+            //Создаем список со значениями параметров звездочки
             var values = new List<(NameParameter name, double min, double max)>
             {
                 (NameParameter.CircleRadius, 60, 300),
@@ -79,10 +85,9 @@ namespace Parameter
             {
                 //Создание нового параметра
                 Parameter parameter = null;
-                //Создаем параметр и передаем значения в конструктор
+                //Создаем параметр и передаем значения в конструктор (среднее значение максимума 
+                //и минимума параметра)
                 parameter = new Parameter(value.name.ToString(), value.min, value.max, (value.min + value.max) / 2);
-               //parameter = new Parameter(value.name.ToString(), value.min, value.max, value.min);
-               //parameter = new Parameter(value.name.ToString(), value.min, value.max, value.max);
                 //Добавляем созданный параметр в словарь параметров
                 _parameters.Add(value.name, parameter);
             }
