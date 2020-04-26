@@ -12,7 +12,7 @@ using Parameter;
 
 namespace Builder
 {
-    class SprocketManager
+    public class SprocketManager
     {
         private SprocketBuilder _sprocketBuilder;
 

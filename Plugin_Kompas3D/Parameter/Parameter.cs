@@ -53,13 +53,13 @@ namespace Parameter
 
             set
             {
-                if (value <= _maxValue && value >= _minValue)
+                if (value.CompareTo(MinValue) < 0 || value.CompareTo(MaxValue) > 0)
                 {
-                    _value = value;
+                    throw new ArgumentException("Значение не входит в диапозон от" + _minValue + "до" + _maxValue);
                 }
                 else
                 {
-                    throw new ArgumentException("Значение не входит в диапозон от" + _minValue + "до" + _maxValue);
+                    _value = value;
                 }
             }
         }

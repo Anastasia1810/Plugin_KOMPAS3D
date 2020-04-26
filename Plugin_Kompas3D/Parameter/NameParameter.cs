@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Parameter
 {
-    enum NameParameter
+    public enum NameParameter
     {
         /// <summary>
         /// Радиус внешней окружности
