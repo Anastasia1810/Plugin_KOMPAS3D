@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using Kompas6API5;
 using ModelParameter;
 
@@ -15,27 +16,31 @@ namespace Builder
         /// </summary>
         private SprocketBuilder _sprocketBuilder;
 
+        KompasObject _kompasObject = null;
+
         /// <summary>
         /// Подключение к экземпляру КОМПАС-3D
         /// </summary>
         /// <returns></returns>
         private KompasObject OpenKompas3D()
         {
-            KompasObject _kompasObject = null;
 
             try
             {
+                _kompasObject = (KompasObject)Marshal.GetActiveObject("KOMPAS.Application.5");
                 _kompasObject.Visible = true;
-                _kompasObject.ActivateControllerAPI();
             }
             catch
             {
                 Type typeKompas = Type.GetTypeFromProgID("KOMPAS.Application.5");
                 _kompasObject = (KompasObject)Activator.CreateInstance(typeKompas);
                 _kompasObject.Visible = true;
-                _kompasObject.ActivateControllerAPI();
             }
-           
+            finally
+            {
+               _kompasObject.ActivateControllerAPI();
+            }
+
             return _kompasObject;
         }
 
