@@ -1,22 +1,12 @@
 ﻿using System;
 
-namespace Parameter
+namespace ModelParameter
 {
     /// <summary>
     /// Хранит данные одного параметра (Название, текущее значение и границы значения)
     /// </summary>
     public class Parameter
     {
-        /// <summary>
-        /// Поле хранит минимальное значение параметра
-        /// </summary>
-        private double _minValue;
-
-        /// <summary>
-        /// Поле хранит максимальное значение параметра
-        /// </summary>
-        private double _maxValue;
-
         /// <summary>
         /// Поле хранит текущее значение параметра
         /// </summary>
@@ -52,7 +42,7 @@ namespace Parameter
             {
                 if (value.CompareTo(MinValue) < 0 || value.CompareTo(MaxValue) > 0)
                 {
-                    throw new ArgumentException("Значение не входит в диапозон от" + _minValue + "до" + _maxValue);
+                    throw new ArgumentException("Значение не входит в диапозон от " + MinValue + " до " + MaxValue);
                 }
                 else
                 {
@@ -71,8 +61,8 @@ namespace Parameter
         public Parameter(string name,double minValue, double maxValue, double value)
         {
             _name = name;
-            _minValue = minValue;
-            _maxValue = maxValue;
+            MinValue = minValue;
+            MaxValue = maxValue;
             _value = value;
         }
     }

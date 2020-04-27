@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Builder;
-using Parameter;
+using ModelParameter;
 
 namespace Plugin3D.UI
 {

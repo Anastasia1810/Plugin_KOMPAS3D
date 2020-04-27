@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Parameter
+namespace ModelParameter
 {
     /// <summary>
     /// Перечисление. Хранит названия параметров модели

@@ -95,9 +95,9 @@
       <Project>{cfb9c946-8ac0-41d5-ad62-3264f3967c8a}</Project>
       <Name>Builder</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Parameter\Parameter.csproj">
+    <ProjectReference Include="..\Parameter\ModelParameter.csproj">
       <Project>{340e59de-5600-48ba-b0b5-9ec1ba1b8bff}</Project>
-      <Name>Parameter</Name>
+      <Name>ModelParameter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,7 +2,7 @@
 using Kompas6API5;
 using Kompas6Constants;
 using Kompas6Constants3D;
-using Parameter;
+using ModelParameter;
 
 namespace Builder
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Parameter
+namespace ModelParameter
 {
     /// <summary>
     /// Класс, который хранит словарь параметров модели и реализует методы 
@@ -57,7 +57,7 @@ namespace Parameter
         /// </summary>
         public void RecalculateExcavationDepth()
         {
-            var maxHeight = Parameter(NameParameter.HoleRadius).Value / 2;
+            var maxHeight = Parameter(NameParameter.HoleRadius).Value / 4;
             Parameter(NameParameter.ExcavationDepth).MaxValue = maxHeight;
 
             if (Parameter(NameParameter.ExcavationDepth).Value > maxHeight)
