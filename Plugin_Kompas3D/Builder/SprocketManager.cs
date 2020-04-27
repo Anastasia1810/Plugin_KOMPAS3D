@@ -16,6 +16,9 @@ namespace Builder
         /// </summary>
         private SprocketBuilder _sprocketBuilder;
 
+        /// <summary>
+        /// Начальное присвоение
+        /// </summary>
         KompasObject _kompasObject = null;
 
         /// <summary>
@@ -24,12 +27,13 @@ namespace Builder
         /// <returns></returns>
         private KompasObject OpenKompas3D()
         {
-
+            //Экземпляр уже существует
             try
             {
                 _kompasObject = (KompasObject)Marshal.GetActiveObject("KOMPAS.Application.5");
                 _kompasObject.Visible = true;
             }
+            //Создание нового экземпляра
             catch
             {
                 Type typeKompas = Type.GetTypeFromProgID("KOMPAS.Application.5");
@@ -38,7 +42,8 @@ namespace Builder
             }
             finally
             {
-               _kompasObject.ActivateControllerAPI();
+                //Активация API созданного экземпляра
+                _kompasObject.ActivateControllerAPI();
             }
 
             return _kompasObject;
