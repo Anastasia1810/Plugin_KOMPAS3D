@@ -131,7 +131,7 @@
             this.CircleThicknessTextBox4.Name = "CircleThicknessTextBox4";
             this.CircleThicknessTextBox4.Size = new System.Drawing.Size(84, 20);
             this.CircleThicknessTextBox4.TabIndex = 3;
-            this.CircleThicknessTextBox4.Text = "12.5";
+            this.CircleThicknessTextBox4.Text = "12";
             this.CircleThicknessTextBox4.TextChanged += new System.EventHandler(this.TextBoxChanged);
             // 
             // HoleRadiusTextBox3
@@ -143,7 +143,7 @@
             this.HoleRadiusTextBox3.Name = "HoleRadiusTextBox3";
             this.HoleRadiusTextBox3.Size = new System.Drawing.Size(84, 20);
             this.HoleRadiusTextBox3.TabIndex = 2;
-            this.HoleRadiusTextBox3.Text = "42.5";
+            this.HoleRadiusTextBox3.Text = "42";
             this.HoleRadiusTextBox3.TextChanged += new System.EventHandler(this.TextBoxChanged);
             // 
             // CylinderRadiusTextBox2
