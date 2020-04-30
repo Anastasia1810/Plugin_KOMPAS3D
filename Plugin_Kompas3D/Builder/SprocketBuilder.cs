@@ -203,37 +203,32 @@ namespace Builder
             EllipseParam ellipseParam = (EllipseParam)_kompasObject.GetParamStruct((short)StructType2DEnum.ko_EllipseParam);
             //Задаем дополнительный радиус для зубьев
             var moreRadius = _sprocketParameters.Parameter(NameParameter.CircleRadius).Value;
-            //Проверяем условия, сколько задано зубьев, из этого устанавливаем размеры
-            //полуосей эллипса
+            //Проверяем условия, сколько задано зубьев, из этого устанавливаем размер
+            //полуоси A эллипса
             if (_sprocketParameters.Parameter(NameParameter.NumberOfTeeth).Value <= 15)
             {
                 if (moreRadius < 90)
                 {
                     ellipseParam.A = 9;
-                    ellipseParam.B = 15;
                 }
                 if (moreRadius >= 90 && moreRadius < 120)
                 {
                     ellipseParam.A = 12;
-                    ellipseParam.B = 20;
                 }
                 
                 if (moreRadius >= 120 && moreRadius < 180)
                 {
                     ellipseParam.A = 15;
-                    ellipseParam.B = 25;
                 }
 
                 if (moreRadius >= 180 && moreRadius < 240)
                 {
                     ellipseParam.A = 18;
-                    ellipseParam.B = 35;
                 }
 
                 if (moreRadius >= 240)
                 {
                     ellipseParam.A = 21;
-                    ellipseParam.B = 40;
                 }
             }
             else 
@@ -243,30 +238,25 @@ namespace Builder
                     if (moreRadius < 90)
                     {
                         ellipseParam.A = 4;
-                        ellipseParam.B = 10;
                     }
                     if (moreRadius >= 90 && moreRadius < 120)
                     {
                         ellipseParam.A = 6;
-                        ellipseParam.B = 20;
                     }
 
                     if (moreRadius >= 120 && moreRadius < 180)
                     {
                         ellipseParam.A = 9;
-                        ellipseParam.B = 25;
                     }
 
                     if (moreRadius >= 180 && moreRadius < 240)
                     {
                         ellipseParam.A = 12;
-                        ellipseParam.B = 35;
                     }
 
                     if (moreRadius >= 240)
                     {
-                        ellipseParam.A = 15;
-                        ellipseParam.B = 40;
+                        ellipseParam.A = 17;
                     }
                 }
                 else
@@ -274,33 +264,30 @@ namespace Builder
                     if (moreRadius < 90)
                     {
                         ellipseParam.A = 6;
-                        ellipseParam.B = 10;
                     }
                     if (moreRadius >= 90 && moreRadius < 120)
                     {
                         ellipseParam.A = 9;
-                        ellipseParam.B = 20;
                     }
 
                     if (moreRadius >= 120 && moreRadius < 180)
                     {
                         ellipseParam.A = 12;
-                        ellipseParam.B = 25;
                     }
 
                     if (moreRadius >= 180 && moreRadius < 240)
                     {
                         ellipseParam.A = 15;
-                        ellipseParam.B = 35;
                     }
 
                     if (moreRadius >= 240)
                     {
-                        ellipseParam.A = 18;
-                        ellipseParam.B = 40;
+                        ellipseParam.A = 19;
                     }
                 }
             }
+            //Полуось B
+            ellipseParam.B = _sprocketParameters.Parameter(NameParameter.ToothDepht).Value;
             //xc,yc – координаты центра эллипса, то есть точки пересечения его осей.
             ellipseParam.xc = 0;
             ellipseParam.yc = moreRadius;

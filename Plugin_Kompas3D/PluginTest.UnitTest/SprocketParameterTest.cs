@@ -113,5 +113,16 @@ namespace PluginTest.UnitTest
             Assert.IsTrue(result, "Конструктор SprocketParameters не создает корректный экземпляр класса");
         }
 
+        [Test(Description = "Позитивный тест метода RecalculateToothDepht")]
+        public void TestRecalculateToothDepth()
+        {
+            var CircleRadius = 300;
+            var expected = CircleRadius / 6;
+            sprocketParameter.Parameter(NameParameter.CircleRadius).Value = CircleRadius;
+            sprocketParameter.Parameter(NameParameter.ToothDepht).Value = expected;
+            sprocketParameter.RecalculateToothDepth();
+            var actual = sprocketParameter.Parameter(NameParameter.ToothDepht).Value;
+            Assert.AreEqual(expected, actual, "Метод RecalculateToothDepth работает некорректно");
+        }
     }
 }

@@ -38,7 +38,8 @@ namespace Plugin3D.UI
                      (CircleThicknessTextBox4, NameParameter.CircleThickness),
                      (CylinderThicknessTextBox5, NameParameter.CylinderThickness),
                      (ExeavationDepthTextBox6, NameParameter.ExcavationDepth),
-                     (NumberOfTeethTextBox7, NameParameter.NumberOfTeeth)
+                     (NumberOfTeethTextBox7, NameParameter.NumberOfTeeth),
+                     (ToothDephtTextBox8, NameParameter.ToothDepht)
                    };
             //Перебор всех элементов списка
             foreach (var element in elements)
@@ -75,6 +76,7 @@ namespace Plugin3D.UI
                 if (parameterName == NameParameter.CircleRadius)
                 {
                     _sprocketParameters.RecalculateCylinderRadius();
+                    _sprocketParameters.RecalculateToothDepth();
                     CircleRadiusTextBox1.Text = _sprocketParameters.Parameter(NameParameter.CircleRadius).Value.ToString();
                 }
                 //При изменении радиуса цилиндра
@@ -108,5 +110,7 @@ namespace Plugin3D.UI
         {
             SprocketManager sprocketManager = new SprocketManager(_sprocketParameters);
         }
+
+       
     }
 }

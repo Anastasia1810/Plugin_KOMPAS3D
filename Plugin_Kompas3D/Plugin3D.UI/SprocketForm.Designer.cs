@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SprocketForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.ToothDephtTextBox8 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.NumberOfTeethTextBox7 = new System.Windows.Forms.TextBox();
             this.ExeavationDepthTextBox6 = new System.Windows.Forms.TextBox();
             this.CylinderThicknessTextBox5 = new System.Windows.Forms.TextBox();
@@ -63,6 +65,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.ToothDephtTextBox8);
+            this.splitContainer1.Panel1.Controls.Add(this.label8);
             this.splitContainer1.Panel1.Controls.Add(this.NumberOfTeethTextBox7);
             this.splitContainer1.Panel1.Controls.Add(this.ExeavationDepthTextBox6);
             this.splitContainer1.Panel1.Controls.Add(this.CylinderThicknessTextBox5);
@@ -85,6 +89,27 @@
             this.splitContainer1.Size = new System.Drawing.Size(997, 366);
             this.splitContainer1.SplitterDistance = 334;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // ToothDephtTextBox8
+            // 
+            this.ToothDephtTextBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ToothDephtTextBox8.Location = new System.Drawing.Point(235, 191);
+            this.ToothDephtTextBox8.Name = "ToothDephtTextBox8";
+            this.ToothDephtTextBox8.Size = new System.Drawing.Size(84, 20);
+            this.ToothDephtTextBox8.TabIndex = 7;
+            this.ToothDephtTextBox8.Text = "28";
+            this.ToothDephtTextBox8.TextChanged += new System.EventHandler(this.TextBoxChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 194);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(102, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Глубина зубьев (B)";
             // 
             // NumberOfTeethTextBox7
             // 
@@ -174,10 +199,10 @@
             // 
             this.BuildButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BuildButton.Location = new System.Drawing.Point(235, 212);
+            this.BuildButton.Location = new System.Drawing.Point(235, 229);
             this.BuildButton.Name = "BuildButton";
             this.BuildButton.Size = new System.Drawing.Size(83, 20);
-            this.BuildButton.TabIndex = 7;
+            this.BuildButton.TabIndex = 8;
             this.BuildButton.Text = "Построить";
             this.BuildButton.UseVisualStyleBackColor = true;
             this.BuildButton.Click += new System.EventHandler(this.BuildButton_Click);
@@ -191,7 +216,7 @@
             this.label7.Location = new System.Drawing.Point(12, 168);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(116, 13);
-            this.label7.TabIndex = 8;
+            this.label7.TabIndex = 9;
             this.label7.Text = "Количество зубьев(n)";
             // 
             // label6
@@ -203,7 +228,7 @@
             this.label6.Location = new System.Drawing.Point(12, 142);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(166, 13);
-            this.label6.TabIndex = 9;
+            this.label6.TabIndex = 10;
             this.label6.Text = "Глубина шпоночной выемки (Н)";
             // 
             // label5
@@ -215,7 +240,7 @@
             this.label5.Location = new System.Drawing.Point(12, 116);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 13);
-            this.label5.TabIndex = 10;
+            this.label5.TabIndex = 11;
             this.label5.Text = "Толщина цилиндра (Sц)";
             // 
             // label4
@@ -227,7 +252,7 @@
             this.label4.Location = new System.Drawing.Point(12, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(203, 13);
-            this.label4.TabIndex = 11;
+            this.label4.TabIndex = 12;
             this.label4.Text = "Толщина внешней части звездочки (S)";
             // 
             // label3
@@ -239,7 +264,7 @@
             this.label3.Location = new System.Drawing.Point(12, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 13);
-            this.label3.TabIndex = 12;
+            this.label3.TabIndex = 13;
             this.label3.Text = "Радиус отверстия (r)";
             // 
             // label2
@@ -251,7 +276,7 @@
             this.label2.Location = new System.Drawing.Point(12, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 13);
-            this.label2.TabIndex = 13;
+            this.label2.TabIndex = 14;
             this.label2.Text = "Радиус цилиндра (Rц)";
             // 
             // label1
@@ -263,7 +288,7 @@
             this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(188, 13);
-            this.label1.TabIndex = 14;
+            this.label1.TabIndex = 15;
             this.label1.Text = "Радиус внешней окружности (Rокр)";
             // 
             // pictureBox1
@@ -274,7 +299,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(13, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(507, 333);
+            this.pictureBox1.Size = new System.Drawing.Size(555, 374);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -319,6 +344,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox ToothDephtTextBox8;
     }
 }
 

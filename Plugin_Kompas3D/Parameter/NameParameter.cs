@@ -40,6 +40,11 @@ namespace ModelParameter
         /// <summary>
         /// Количество зубьев
         /// </summary>
-        NumberOfTeeth
+        NumberOfTeeth,
+
+        /// <summary>
+        /// Глубина зубьев
+        /// </summary>
+        ToothDepht
     }
 }

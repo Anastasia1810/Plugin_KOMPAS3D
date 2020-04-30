@@ -66,6 +66,28 @@ namespace ModelParameter
             }
         }
 
+        /// <summary>
+        /// Перерасчет глубины зубьев
+        /// </summary>
+        public void RecalculateToothDepth()
+        {
+            var maxHeight = Parameter(NameParameter.CircleRadius).Value / 6;
+            Parameter(NameParameter.ToothDepht).MaxValue = maxHeight;
+            var minHeight = Parameter(NameParameter.CircleRadius).Value / 10;
+            Parameter(NameParameter.ToothDepht).MinValue = minHeight;
+
+            if (Parameter(NameParameter.ToothDepht).Value > maxHeight)
+            {
+                Parameter(NameParameter.ToothDepht).Value = maxHeight;
+            }
+
+            if (Parameter(NameParameter.ToothDepht).Value < minHeight)
+            {
+                Parameter(NameParameter.ToothDepht).Value = minHeight;
+            }
+          
+        }
+
         public SprocketParameters()
         {
             //Создаем список со значениями параметров звездочки
@@ -77,7 +99,8 @@ namespace ModelParameter
                 (NameParameter.CircleThickness, 5, 20),
                 (NameParameter.CylinderThickness, 0, 40),
                 (NameParameter.ExcavationDepth, 0, 18),
-                (NameParameter.NumberOfTeeth, 7, 30)
+                (NameParameter.NumberOfTeeth, 7, 30),
+                (NameParameter.ToothDepht, 6, 50)
 
             };
             //Перебираем все значения звездочки
