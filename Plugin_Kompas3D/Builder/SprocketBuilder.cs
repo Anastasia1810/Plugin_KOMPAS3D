@@ -33,7 +33,7 @@ namespace Builder
             //Получение объекта KOMPAS 3D
             _kompasObject = kompas;
             //Создание звездочки
-            CreateModel();
+            CreateModel();       
         }
 
         /// <summary>

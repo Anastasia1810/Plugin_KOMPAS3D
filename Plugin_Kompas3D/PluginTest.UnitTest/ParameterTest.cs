@@ -18,6 +18,7 @@ namespace PluginTest.UnitTest
         {
             parameter = new Parameter("Название параметра", 10, 30, 15);
         }
+
         [Test(Description = "Позитивный тест геттера MinValue")]
         public void TestMinValueGet_CorrectValue()
         {
