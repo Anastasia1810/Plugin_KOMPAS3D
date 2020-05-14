@@ -66,7 +66,8 @@ namespace ModelParameter
             foreach (var value in values)
             {
                 Parameter parameter = null;
-                parameter = new Parameter(value.name.ToString(), value.min, value.max, (value.min + value.max) / 2);
+                parameter = 
+                    new Parameter(value.name.ToString(), value.min, value.max, (value.min + value.max) / 2);
                 _parameters.Add(value.name, parameter);
             }
 

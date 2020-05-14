@@ -69,7 +69,8 @@ namespace Plugin3D.UI
                     var maxCylinderRadius = 
                         _sprocketParameters.Parameter(NameParameter.CircleRadius).Value / 2;
                     _sprocketParameters.Parameter(NameParameter.CylinderRadius).MaxValue = maxCylinderRadius;
-                    var minCylinderRadius = _sprocketParameters.Parameter(NameParameter.CylinderRadius).MinValue;
+                    var minCylinderRadius = 
+                        _sprocketParameters.Parameter(NameParameter.CylinderRadius).MinValue;
                     _sprocketParameters.RecalculateParameter(value, maxCylinderRadius,minCylinderRadius);
 
                     var maxToothDepth = _sprocketParameters.Parameter(NameParameter.CircleRadius).Value / 6;

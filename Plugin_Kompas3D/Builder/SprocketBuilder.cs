@@ -111,7 +111,8 @@ namespace Builder
             var minWegth = -_sprocketParameters.Parameter(NameParameter.HoleRadius).Value / 6;
             var maxWegth = _sprocketParameters.Parameter(NameParameter.HoleRadius).Value / 6;
             var minHeight = _sprocketParameters.Parameter(NameParameter.HoleRadius).Value - 1;
-            var maxHeight = _sprocketParameters.Parameter(NameParameter.HoleRadius).Value + _sprocketParameters.Parameter(NameParameter.ExcavationDepth).Value;
+            var maxHeight = _sprocketParameters.Parameter(NameParameter.HoleRadius).Value 
+                + _sprocketParameters.Parameter(NameParameter.ExcavationDepth).Value;
 
             ksDocument2D iDocument2D = (ksDocument2D)iDefinitionSketch.BeginEdit();
 
