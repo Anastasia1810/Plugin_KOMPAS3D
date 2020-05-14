@@ -42,41 +42,8 @@ namespace PluginTest.UnitTest
             Assert.IsTrue(result, message);
         }
 
-        [Test(Description = "Позитивный тест метода RecalculateCylinderRadius")]
-        public void TestRecalculateCylinderRadius()
-        {
-            var CircleRadius = 300;
-            var expected = CircleRadius/2;
-            sprocketParameter.Parameter(NameParameter.CircleRadius).Value = CircleRadius;
-            sprocketParameter.Parameter(NameParameter.CylinderRadius).Value = expected;
-            sprocketParameter.RecalculateCylinderRadius();
-            var actual = sprocketParameter.Parameter(NameParameter.CylinderRadius).Value; 
-            Assert.AreEqual(expected, actual, "Метод RecalculateCylinderRadius работает некорректно");
-        }
-
-        [Test(Description = "Позитивный тест метода RecalculateHoleRadius")]
-        public void TestRecalculateHoleRadius()
-        {
-            var CylinderRadius = 100;
-            var expected = CylinderRadius / 2;
-            sprocketParameter.Parameter(NameParameter.CylinderRadius).Value = CylinderRadius;
-            sprocketParameter.Parameter(NameParameter.HoleRadius).Value = expected;
-            sprocketParameter.RecalculateHoleRadius();
-            var actual = sprocketParameter.Parameter(NameParameter.HoleRadius).Value;
-            Assert.AreEqual(expected, actual, "Метод RecalculateHoleRadius работает некорректно");
-        }
-
-        [Test(Description = "Позитивный тест метода RecalculateExcavationDepth")]
-        public void TestRecalculateExcavationDepth()
-        {
-            var HoleRadius = 50;
-            var expected = HoleRadius / 4;
-            sprocketParameter.Parameter(NameParameter.HoleRadius).Value = HoleRadius;
-            sprocketParameter.Parameter(NameParameter.ExcavationDepth).Value = expected;
-            sprocketParameter.RecalculateExcavationDepth();
-            var actual = sprocketParameter.Parameter(NameParameter.ExcavationDepth).Value;
-            Assert.AreEqual(expected, actual, "Метод RecalculateExcavationDepth работает некорректно");
-        }
+    
+        
 
         [Test(Description = "Позитивный тест метода перечисления ToString")]
         public void TestToString()
@@ -113,16 +80,17 @@ namespace PluginTest.UnitTest
             Assert.IsTrue(result, "Конструктор SprocketParameters не создает корректный экземпляр класса");
         }
 
-        [Test(Description = "Позитивный тест метода RecalculateToothDepht")]
-        public void TestRecalculateToothDepth()
+        [Test(Description = "Позитивный тест метода RecalculateParameter")]
+        public void TestRecalculateParameter()
         {
             var CircleRadius = 300;
-            var expected = CircleRadius / 6;
-            sprocketParameter.Parameter(NameParameter.CircleRadius).Value = CircleRadius;
-            sprocketParameter.Parameter(NameParameter.ToothDepht).Value = expected;
-            sprocketParameter.RecalculateToothDepth();
-            var actual = sprocketParameter.Parameter(NameParameter.ToothDepht).Value;
-            Assert.AreEqual(expected, actual, "Метод RecalculateToothDepth работает некорректно");
+            var expected = CircleRadius / 2;
+            var minValue = 20;
+            sprocketParameter.Parameter(NameParameter.CylinderRadius).Value = expected;
+            sprocketParameter.RecalculateParameter(sprocketParameter.Parameter(NameParameter.CylinderRadius).Value,expected,minValue);
+            var actual = sprocketParameter.Parameter(NameParameter.CylinderRadius).Value;
+            Assert.AreEqual(expected, actual, "Метод RecalculateCylinderRadius работает некорректно");
         }
+
     }
 }

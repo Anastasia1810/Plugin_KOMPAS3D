@@ -25,69 +25,28 @@ namespace ModelParameter
         }
 
         /// <summary>
-        /// Перерасчет радиуса цилиндра
+        /// Присваивание максимального(минимального) значения зависимым параметрам,
+        /// если они больше максимального(меньше минимального) значения 
         /// </summary>
-        public void RecalculateCylinderRadius()
+        /// <param name="value"></param>
+        /// <param name="maxValue"></param>
+        public void RecalculateParameter(double value, double maxValue, double minValue)
         {
-            var maxCylinderRadius = Parameter(NameParameter.CircleRadius).Value / 2;
-            Parameter(NameParameter.CylinderRadius).MaxValue = maxCylinderRadius;
-
-            if (Parameter(NameParameter.CylinderRadius).Value > maxCylinderRadius)
+            if (value > maxValue)
             {
-                Parameter(NameParameter.CylinderRadius).Value = maxCylinderRadius;
+                value = maxValue;
+            }
+
+            if (value < minValue)
+            {
+                value = minValue;
             }
         }
 
+        
         /// <summary>
-        /// Перерасчет радиуса отверстия
+        /// Конструктор класса SprocketParameters
         /// </summary>
-        public void RecalculateHoleRadius()
-        {
-            var maxHoleRadius = Parameter(NameParameter.CylinderRadius).Value / 2;
-            Parameter(NameParameter.HoleRadius).MaxValue = maxHoleRadius;
-
-            if (Parameter(NameParameter.HoleRadius).Value > maxHoleRadius)
-            {
-                Parameter(NameParameter.HoleRadius).Value = maxHoleRadius;
-            }
-        }
-
-        /// <summary>
-        /// Перерасчет длины выемки
-        /// </summary>
-        public void RecalculateExcavationDepth()
-        {
-            var maxHeight = Parameter(NameParameter.HoleRadius).Value / 4;
-            Parameter(NameParameter.ExcavationDepth).MaxValue = maxHeight;
-
-            if (Parameter(NameParameter.ExcavationDepth).Value > maxHeight)
-            {
-                Parameter(NameParameter.ExcavationDepth).Value = maxHeight;
-            }
-        }
-
-        /// <summary>
-        /// Перерасчет глубины зубьев
-        /// </summary>
-        public void RecalculateToothDepth()
-        {
-            var maxHeight = Parameter(NameParameter.CircleRadius).Value / 6;
-            Parameter(NameParameter.ToothDepht).MaxValue = maxHeight;
-            var minHeight = Parameter(NameParameter.CircleRadius).Value / 10;
-            Parameter(NameParameter.ToothDepht).MinValue = minHeight;
-
-            if (Parameter(NameParameter.ToothDepht).Value > maxHeight)
-            {
-                Parameter(NameParameter.ToothDepht).Value = maxHeight;
-            }
-
-            if (Parameter(NameParameter.ToothDepht).Value < minHeight)
-            {
-                Parameter(NameParameter.ToothDepht).Value = minHeight;
-            }
-          
-        }
-
         public SprocketParameters()
         {
             //Создаем список со значениями параметров звездочки
@@ -106,12 +65,8 @@ namespace ModelParameter
             //Перебираем все значения звездочки
             foreach (var value in values)
             {
-                //Создание нового параметра
                 Parameter parameter = null;
-                //Создаем параметр и передаем значения в конструктор (среднее значение максимума 
-                //и минимума параметра)
                 parameter = new Parameter(value.name.ToString(), value.min, value.max, (value.min + value.max) / 2);
-                //Добавляем созданный параметр в словарь параметров
                 _parameters.Add(value.name, parameter);
             }
 

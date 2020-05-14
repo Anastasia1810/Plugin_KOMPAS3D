@@ -26,7 +26,6 @@ namespace Plugin3D.UI
 
         public SprocketForm()
         {
-            //Инициализация формы
             InitializeComponent();
 
             //Создание списка элементов TextBox существующих на форме
@@ -41,10 +40,8 @@ namespace Plugin3D.UI
                      (NumberOfTeethTextBox7, NameParameter.NumberOfTeeth),
                      (ToothDephtTextBox8, NameParameter.ToothDepht)
                    };
-            //Перебор всех элементов списка
             foreach (var element in elements)
             {
-                //Добавление параметра в словарь элементов TextBox формы
                 _formElements.Add(element.textBox, element.parameter);
             }
         }
@@ -57,46 +54,59 @@ namespace Plugin3D.UI
         /// <param name="e"></param>
         private void TextBoxChanged(object sender, EventArgs e)
         {
-            //Преобразуем из object в TextBox
             var textBox = (TextBox)sender;
             //Блок ожидания ошибки
             try
             {
-                //Окрашиваем поле в красный цвет
                 textBox.BackColor = Color.Salmon;
-                //Получаем текст из элемента TextBox
                 var value = double.Parse(textBox.Text);
-                //Определяем имя параметра соответствующего данному TextBox
                 var parameterName = _formElements[textBox];
-                //Присваиваем значение найденному параметру
                 _sprocketParameters.Parameter(parameterName).Value = value;
-                //Окрашиваем поле в зеленый цвет
                 textBox.BackColor = Color.LightGreen;
                 //При изменении радиуса внешней окружности
                 if (parameterName == NameParameter.CircleRadius)
                 {
-                    _sprocketParameters.RecalculateCylinderRadius();
-                    _sprocketParameters.RecalculateToothDepth();
-                    CircleRadiusTextBox1.Text = _sprocketParameters.Parameter(NameParameter.CircleRadius).Value.ToString();
+                    var maxCylinderRadius = 
+                        _sprocketParameters.Parameter(NameParameter.CircleRadius).Value / 2;
+                    _sprocketParameters.Parameter(NameParameter.CylinderRadius).MaxValue = maxCylinderRadius;
+                    var minCylinderRadius = _sprocketParameters.Parameter(NameParameter.CylinderRadius).MinValue;
+                    _sprocketParameters.RecalculateParameter(value, maxCylinderRadius,minCylinderRadius);
+
+                    var maxToothDepth = _sprocketParameters.Parameter(NameParameter.CircleRadius).Value / 6;
+                    _sprocketParameters.Parameter(NameParameter.ToothDepht).MaxValue = maxToothDepth;
+                    var minToothDepth = _sprocketParameters.Parameter(NameParameter.CircleRadius).Value / 10;
+                    _sprocketParameters.Parameter(NameParameter.ToothDepht).MinValue = minToothDepth;
+                    _sprocketParameters.RecalculateParameter(value,maxToothDepth,minToothDepth);
+
+                    CircleRadiusTextBox1.Text = 
+                        _sprocketParameters.Parameter(NameParameter.CircleRadius).Value.ToString();
                 }
                 //При изменении радиуса цилиндра
                 if (parameterName == NameParameter.CylinderRadius)
                 {
-                    _sprocketParameters.RecalculateHoleRadius();
-                    CylinderRadiusTextBox2.Text = _sprocketParameters.Parameter(NameParameter.CylinderRadius).Value.ToString();
+                    var maxHoleRadius = 
+                        _sprocketParameters.Parameter(NameParameter.CylinderRadius).Value / 2;
+                    _sprocketParameters.Parameter(NameParameter.HoleRadius).MaxValue = maxHoleRadius;
+                    var minHoleRadius = _sprocketParameters.Parameter(NameParameter.HoleRadius).MinValue;
+                    _sprocketParameters.RecalculateParameter(value, maxHoleRadius,minHoleRadius);
+                    CylinderRadiusTextBox2.Text = 
+                        _sprocketParameters.Parameter(NameParameter.CylinderRadius).Value.ToString();
                 }
                 //При изменении радиуса отверстия
                 if (parameterName == NameParameter.HoleRadius)
                 {
-                    _sprocketParameters.RecalculateExcavationDepth();
-                    HoleRadiusTextBox3.Text = _sprocketParameters.Parameter(NameParameter.HoleRadius).Value.ToString();
+                    var maxHeight = _sprocketParameters.Parameter(NameParameter.HoleRadius).Value / 4;
+                    _sprocketParameters.Parameter(NameParameter.ExcavationDepth).MaxValue = maxHeight;
+                    var minHeight = _sprocketParameters.Parameter(NameParameter.ExcavationDepth).MinValue;
+                    _sprocketParameters.RecalculateParameter(value, maxHeight,minHeight);
+                    HoleRadiusTextBox3.Text = 
+                        _sprocketParameters.Parameter(NameParameter.HoleRadius).Value.ToString();
                 }
 
             }
             //Выполняется в случае выявления ошибки в try
             catch
             {
-                //Окрашиваем поле в красный цвет
                 textBox.BackColor = Color.Salmon;
             }
         }

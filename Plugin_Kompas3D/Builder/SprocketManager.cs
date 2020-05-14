@@ -42,7 +42,6 @@ namespace Builder
             }
             finally
             {
-                //Активация API созданного экземпляра
                 _kompasObject.ActivateControllerAPI();
             }
 
